@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-      SBT_HOME = tool name: 'sbt.13.13', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'
+      SBT_HOME = tool name: 'sbt', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'
       PATH = "${env.SBT_HOME}/bin:${env.PATH}"
     }
 
@@ -17,7 +17,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing..."
-                sh "${tool name: 'sbt', type:'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt test"
+                sh "sbt test"
             }
         }
 
